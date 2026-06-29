@@ -14,7 +14,7 @@
 </head>
 <body>
   <header class="hero">
-    <nav><a class="brand" href="#top"><img src="assets/images/logo.png" alt="Longhu logo">LONGHU · 五行</a><a href="#catalog">Collection</a><a href="#contact">Contact</a></nav>
+    <nav><a class="brand" href="#top"><img src="assets/images/logo.png" alt="Longhu logo">LONGHU · 五行</a><a href="#catalog">Collection</a><a href="#contact">Contact</a><button id="cart-button" class="cart-button">Cart · <span id="cart-count">0</span></button></nav>
     <div class="hero-copy" id="top">
       <p class="eyebrow">TAOIST HERITAGE · LONGHU MOUNTAIN</p>
       <h1>Objects of balance,<br>chosen with intention.</h1>
@@ -30,7 +30,7 @@
     </section>
     <section id="catalog" class="catalog">
       <div class="section-head"><div><p class="eyebrow">CURATED CATALOG</p><h2>Browse by tradition</h2></div><div id="filters" class="filters"></div></div>
-      <p class="notice">Catalog structure prepared for sourcing. Live marketplace price, source link and original product photography will be added only after verified source data is available.</p>
+      <p class="notice">Launch prices use a provisional sourcing-cost model: estimated RMB cost × 60 × 0.1471 USD/CNY. Availability and final specification are confirmed after order. Original supplier photography will replace the illustrated catalog tiles when verified source files are available.</p>
       <div id="grid" class="grid"></div>
     </section>
     <section class="story">
@@ -47,6 +47,18 @@
     </div>
     <p class="fine">© 2026 Longhu Mountain Feng Shui Collection. Cultural and decorative products only.</p>
   </footer>
+  <dialog id="checkout" class="checkout">
+    <div class="checkout-head"><div><p class="eyebrow">SECURE ORDER SUMMARY</p><h2>Your cart</h2></div><button id="close-cart" aria-label="Close cart">×</button></div>
+    <div id="cart-lines" class="cart-lines"></div>
+    <div class="checkout-total"><span>Total</span><strong id="cart-total">$0.00 USD</strong></div>
+    <div class="checkout-grid">
+      <section><h3>Pay with PayPal</h3><p>Pay the displayed order total through the merchant’s PayPal.Me page.</p><a id="paypal-pay" class="pay-button paypal" href="https://www.paypal.me/Rambopeng" target="_blank" rel="noopener">Continue to PayPal</a></section>
+      <section><h3>Pay with USDT</h3><p><strong>Network: TRON (TRC20) only.</strong> Send the exact USD total as USDT, then send the transaction ID and order summary by WhatsApp.</p><code id="wallet">TKS64KEw7CiJXS9pnnoMwUeALnLoSEuMFc</code><button id="copy-wallet" class="pay-button">Copy wallet address</button></section>
+    </div>
+    <label class="order-label">Order summary<textarea id="order-summary" readonly></textarea></label>
+    <a id="confirm-order" class="pay-button confirm" href="https://wa.me/8613326880321" target="_blank" rel="noopener">Send order and payment reference</a>
+    <p class="payment-note">Payments are manually verified. USDT transfers are irreversible; confirm TRC20 network and wallet address before sending. Shipping is quoted separately unless stated otherwise.</p>
+  </dialog>
   <script src="assets/catalog.js"></script>
 </body>
 </html>
