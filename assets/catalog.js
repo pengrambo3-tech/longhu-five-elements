@@ -1,0 +1,25 @@
+const groups = {
+  "Five Elements Jewelry": [
+    ["Black Obsidian Protection Bracelet","黑曜石护身手串"],["Rainbow Obsidian Bracelet","彩虹眼黑曜石手串"],["Golden Obsidian Bracelet","金曜石手串"],["Clear Quartz Bracelet","白水晶手串"],["Amethyst Bracelet","紫水晶手串"],["Rose Quartz Bracelet","粉水晶手串"],["Citrine Wealth Bracelet","黄水晶招财手串"],["Green Aventurine Bracelet","绿东陵石手串"],["Tiger's Eye Bracelet","虎眼石手串"],["Garnet Vitality Bracelet","石榴石手串"],["Cinnabar Bead Bracelet","朱砂手串"],["Cinnabar Zodiac Pendant","朱砂生肖吊坠"],["Hetian Jade Peace Pendant","和田玉平安扣"],["Jadeite Safety Buckle","翡翠平安扣"],["Jade Gourd Pendant","玉石葫芦吊坠"],["Five-Element Bead Bracelet","五行珠手串"],["Five-Element Cord Bracelet","五色绳手链"],["Bagua Obsidian Pendant","八卦黑曜石吊坠"],["Pixiu Crystal Bracelet","貔貅水晶手串"],["Five-Element Stone Necklace","五行石项链"]
+  ],
+  "Feng Shui Objects": [
+    ["Copper Bagua Mirror","铜八卦镜"],["Wooden Bagua Plaque","桃木八卦牌"],["Three-Legged Money Toad","三足金蟾"],["Brass Money Toad","黄铜金蟾"],["Natural Feng Shui Stone","天然风水石"],["Taishan Stone Tablet","泰山石敢当"],["Crystal Wealth Bowl","水晶聚宝盆"],["Citrine Wealth Bowl","黄水晶聚宝盆"],["Five-Element Crystal Tree","五行水晶树"],["Pixiu Wealth Statue","招财貔貅摆件"],["Dragon Turtle Statue","龙龟摆件"],["Lucky Qilin Statue","麒麟摆件"],["Wu Lou Health Gourd","五帝铜葫芦"],["Five-Emperor Coin Charm","五帝钱挂件"],["Feng Shui Compass","风水罗盘"],["Seven-Star Formation Set","七星阵摆件"],["Crystal Sphere","水晶球摆件"],["Mountain-and-Water Ornament","山水靠山摆件"],["Lucky Bamboo Display","富贵竹摆件"],["Incense Burner for Altar","供桌香炉"]
+  ],
+  "Ancestor Offering Sets": [
+    ["Traditional Ancestor Joss Paper","传统祖先纸钱"],["Gold Ingot Joss Paper","元宝纸钱"],["Bank of Heaven Notes","天地银行冥币"],["Qingming Memorial Gift Set","清明祭祖套装"],["Paper House Offering","祭祀纸房子"],["Luxury Villa Paper Offering","祭祀别墅纸扎"],["Paper Car Offering","祭祀纸汽车"],["Paper Motorbike Offering","祭祀纸摩托车"],["Paper Smartphone Offering","祭祀纸手机"],["Paper Watch Offering","祭祀纸手表"],["Paper Laptop Offering","祭祀纸电脑"],["Paper Television Offering","祭祀纸电视"],["Paper Clothing Set","祭祀纸衣服"],["Women's Paper Gift Set","女性纸扎用品套装"],["Men's Paper Gift Set","男性纸扎用品套装"],["Paper Household Appliance Set","纸扎家电套装"],["Paper Mahjong Set","祭祀纸麻将"],["Paper Servant Figurine Set","纸扎侍从套装"],["Ancestor Memorial Incense Set","祭祖香烛套装"],["Complete Qingming Offering Bundle","清明祭祀全套礼包"]
+  ],
+  "Feng Shui Learning": [
+    ["Introduction to Feng Shui","风水入门课件"],["Five Elements Fundamentals","五行基础课件"],["Yin-Yang Theory Essentials","阴阳理论课件"],["Bagua for Beginners","八卦入门课件"],["Heavenly Stems and Earthly Branches","天干地支课件"],["Twenty-Four Mountains Guide","二十四山课件"],["Form School Fundamentals","形势派风水课件"],["Compass School Fundamentals","理气派风水课件"],["Home Feng Shui Basics","阳宅风水课件"],["Grave-Site Feng Shui Basics","阴宅风水课件"],["Feng Shui Compass Practice","罗盘使用课件"],["Flying Star Feng Shui","玄空飞星课件"],["Eight Mansions Feng Shui","八宅风水课件"],["San He Feng Shui","三合风水课件"],["Date Selection Fundamentals","择日学课件"],["BaZi Foundation Course","八字基础课件"],["I Ching Foundation Course","易经基础课件"],["Feng Shui Case Studies","风水案例课件"],["Shop and Office Feng Shui","商铺办公风水课件"],["Complete Feng Shui Study Bundle","风水学习全套资料"]
+  ]
+};
+const copy={"Five Elements Jewelry":"Wearable pieces associated with the Five Elements. Materials and symbolism vary by design.","Feng Shui Objects":"A traditional decorative object used in homes, studios or ceremonial spaces.","Ancestor Offering Sets":"A paper ceremonial offering traditionally used for remembrance. Observe local fire-safety rules.","Feng Shui Learning":"English-ready learning material covering traditional Chinese metaphysical concepts."};
+const icons={"Five Elements Jewelry":"◇","Feng Shui Objects":"☯","Ancestor Offering Sets":"祀","Feng Shui Learning":"易"};
+const grid=document.querySelector('#grid'), filters=document.querySelector('#filters');
+function render(active='All'){
+  grid.innerHTML='';
+  Object.entries(groups).forEach(([group,items])=>{if(active!=='All'&&active!==group)return;items.forEach(([en,cn],i)=>{
+    const item=`${group} — ${en} (${cn})`;const wa=`https://wa.me/8613326880321?text=${encodeURIComponent('Hello, I would like a quote for: '+item)}`;
+    const el=document.createElement('article');el.className='card';el.innerHTML=`<div class="visual">${icons[group]}</div><div class="card-body"><span class="tag">${group.toUpperCase()}</span><h3>${en}</h3><p class="cn">${cn}</p><p>${copy[group]}</p><p class="meta">Item ${String(i+1).padStart(2,'0')} · Price on request</p><a class="inquire" href="${wa}">Request a WhatsApp quote</a></div>`;grid.appendChild(el);
+  })});
+}
+['All',...Object.keys(groups)].forEach((name,i)=>{const b=document.createElement('button');b.textContent=name;b.className=i===0?'active':'';b.onclick=()=>{document.querySelectorAll('.filters button').forEach(x=>x.classList.remove('active'));b.classList.add('active');render(name)};filters.appendChild(b)});render();
